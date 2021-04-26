@@ -1,5 +1,6 @@
 const knex = require('../database/connection');
 const bcrypt = require('bcrypt');
+const validation = require('../validations/validations');
 
 // GET
 exports.findAll = async () => {
@@ -10,7 +11,6 @@ exports.findAll = async () => {
         return { err: err, result: [] };
     }
 }
-
 
 exports.findById = async (id) => {
     try{
@@ -71,5 +71,43 @@ exports.getUserForEmail = async (email) => {
         }
     }catch(err){
         return []
+    }
+}
+
+// PUT
+exports.update = async (id, email, name) => {
+    const user = await this.findById(id);
+    let edit = {};
+
+    if(user != undefined){
+        if(email != undefined){
+            const result = await this.findByEmail(email);
+            if(!result){
+                edit.email = email;
+            }
+        }else{
+            return { status: false, err: "E-mail já cadastrado" };
+        }
+
+        if(validation.validationField(name)){
+            edit.name = name;   
+        }
+    
+        if(validation.validationField(role)){
+            edit.role = role;
+        }
+
+        try{
+            await knex
+                .update(edit)
+                .where({ id: id })
+                .table("users");
+
+                return { status: true }
+        }catch(err){
+            return { status: false, err: err };
+        }
+    }else{
+        return { status: false, err: "Usuário não encontrado." }
     }
 }
