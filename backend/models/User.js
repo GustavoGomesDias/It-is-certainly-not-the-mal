@@ -1,5 +1,7 @@
 const knex = require('../database/connection');
+const bcrypt = require('bcrypt');
 
+// GET
 exports.findAll = async () => {
     try{
         const result = await knex.select(["id", "email", "name", "role"]).table('users');
@@ -32,9 +34,9 @@ exports.findById = async (id) => {
 exports.findByEmail = async (email) => {
     try{
         const result = await knex
-            .select("*")
+            .select("email")
             .where({ email: email })
-            table('users');
+            .table('users');
 
         if(result.length > 0){
             return true;
@@ -42,6 +44,16 @@ exports.findByEmail = async (email) => {
             return false;
         }
     }catch(err){
-        return false;
+        return true;
+    }
+}
+
+// POST
+exports.newUser = async (email, password, name) => {
+    try{
+        const hash = await bcrypt.hash(password, 10);
+        await knex.insert({ email, password: hash, name, role: 0 }).table('users');
+    }catch(err){
+        return undefined;
     }
 }
