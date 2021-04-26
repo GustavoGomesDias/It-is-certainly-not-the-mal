@@ -27,3 +27,21 @@ exports.findById = async (id) => {
         
     }
 }
+
+// Para ser usado internamente
+exports.findByEmail = async (email) => {
+    try{
+        const result = await knex
+            .select("*")
+            .where({ email: email })
+            table('users');
+
+        if(result.length > 0){
+            return true;
+        }else{
+            return false;
+        }
+    }catch(err){
+        return false;
+    }
+}
