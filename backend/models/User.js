@@ -57,3 +57,19 @@ exports.newUser = async (email, password, name) => {
         return undefined;
     }
 }
+
+exports.getUserForEmail = async (email) => {
+    try{
+        const result = await knex
+            .select(["id", "email", "name", "password", "role"])
+            .where({email: email})
+            .table("users");
+        if(result.length > 0){
+            return result[0];
+        }else{
+            return undefined;
+        }
+    }catch(err){
+        return []
+    }
+}

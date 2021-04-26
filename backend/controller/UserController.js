@@ -1,4 +1,8 @@
 const User = require("../models/User");
+const bcrypt = require('bcrypt');
+const jwt = require('jsonwebtoken');
+
+const secret = 'iuaduiajsdjuisajodijoasidjio';
 
 // GET
 exports.getAllUsers = async (req, res) => {
@@ -52,4 +56,23 @@ exports.createNewUser = async (req, res) => {
 
     await User.newUser(email, password, name);
     res.status(200).json({ message: "Usuário cadastrado!" });
+}
+
+exports.login = async (req, res) => {
+    const { email, password } = req.body;
+    const user =  await User.getUserForEmail(email);
+
+    if(user != undefined){
+        const result = await bcrypt.compare(password, user.password);
+
+        if(result){
+            const token = jwt.sign({ id: user.id, emial: user.email, role: user.role }, secret);
+
+            res.json({ token: token }).status(200);
+        }else{
+            res.json({ message: "Senha incorreta." }).status(200);
+        }
+    }else{
+        res.json({ status: false, err: "Usuário não existe." }).status(406);
+    }
 }
