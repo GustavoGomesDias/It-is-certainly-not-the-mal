@@ -108,3 +108,23 @@ exports.update = async (id, email, name) => {
         return { status: false, err: "Usuário não encontrado." }
     }
 }
+
+// DELETE
+
+exports.remove = async (id) => {
+    try{
+        const user =  await this.findById(id);
+
+        if(user != undefined){
+            await knex
+                .delete()
+                .where({ id: id })
+                .table("users");
+            return { status: true };
+        }else{
+            return { status: false, err: "usuário não existe" };
+        }
+    }catch(err){
+        return { status: false, err: err };
+    }
+}

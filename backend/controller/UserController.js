@@ -95,3 +95,15 @@ exports.edit = async (req, res) => {
     }
     
 }
+
+// DELETE
+exports.delete = async (req, res) => {
+    const id = req.params.id;
+    const result = await User.remove(id);
+
+    if(result.status){
+        res.status(200).json({ message: "Usuário deletado com sucesso" });
+    }else{
+        res.status(406).json(result.err);
+    }
+}
