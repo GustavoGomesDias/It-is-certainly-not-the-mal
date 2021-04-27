@@ -17,17 +17,17 @@ const isLogged = (req, res, next) => {
                 next();
             }
         }catch(err){
-            res.status(403).json({ err: "Você não está logado" });s
+            res.status(403).json({ err: "Você não está logado" });
         }
     }else{
-        res.stauts(403).json({err: "Você não está autenticado."});
+        res.status(403).json({err: "Você não está autenticado."});
     }
 
 }
 
 const isAdmin = (req, res, next) => {
     const authToken = req.headers['authorization'];
-
+    
     if(!validationField(authToken)){
         const bearer = authToken.split(' ');
         const token = bearer[1];
@@ -42,7 +42,7 @@ const isAdmin = (req, res, next) => {
             res.status(403).json({ message: "Você não tem permissão para isso." });s
         }
     }else{
-        res.stauts(403).json({err: "Você não está autenticado."});
+        res.status(403).json({err: "Você não está autenticado."});
     }
 }
 

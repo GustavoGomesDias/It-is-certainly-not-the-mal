@@ -79,15 +79,16 @@ exports.update = async (id, email, name) => {
     const user = await this.findById(id);
 
     let edit = {};
+    console.log(email);
 
     if(user != undefined){
         if(email != undefined){
             const result = await this.findByEmail(email);
             if(!result){
                 edit.email = email;
+            }else{
+                return { status: false, err: "E-mail já cadastrado" };
             }
-        }else{
-            return { status: false, err: "E-mail já cadastrado" };
         }
 
         if(!validation.validationField(name)){
