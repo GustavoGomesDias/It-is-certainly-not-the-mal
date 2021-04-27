@@ -1,6 +1,7 @@
 const User = require("../models/User");
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
+const validations = require('../validations/validations');
 
 const secret = 'iuaduiajsdjuisajodijoasidjio';
 
@@ -26,23 +27,28 @@ exports.getUserById = async (req, res) => {
 exports.createNewUser = async (req, res) => {
     const { email, password, name } = req.body;
 
-    
+    if(!validations.validationEmail(email)){
+        res.status(400).json({ err: "O e-mail deve seguir um formato parecido com 'exemplo@exemplo.com" });
+        return;
+    }
 
-    if(email == undefined || name == undefined || password == undefined){
+    if(validations.validationField(email)){
         res.status(400).json({ err: "Informações inválidas" });
         return;
     }
+    
+    if(validations.validationField(password)){
+        res.status(400).json({ err: "Informações inválidas" });
+        return;
+    }
+    
+    if(validations.validationField(name)){
+        res.status(400).json({ err: "Informações inválidas" });
+        return;
+    }
+
+    
     if(email == "" || name == "" || password == ""){
-        res.status(400).json({ err: "Informações inválidas" });
-        return;
-    }
-    
-    if(email == undefined || name == undefined || password == undefined){
-        res.status(400).json({ err: "Informações inválidas" });
-        return;
-    }
-
-    if(email == " " || name == " " || password == " "){
         res.status(400).json({ err: "Informações inválidas" });
         return;
     }
@@ -67,7 +73,6 @@ exports.login = async (req, res) => {
 
         if(result){
             const token = jwt.sign({ id: user.id, emial: user.email, role: user.role }, secret);
-
             res.json({ token: token }).status(200);
         }else{
             res.json({ message: "Senha incorreta." }).status(200);
