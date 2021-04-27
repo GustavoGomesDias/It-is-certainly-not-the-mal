@@ -77,6 +77,7 @@ exports.getUserForEmail = async (email) => {
 // PUT
 exports.update = async (id, email, name) => {
     const user = await this.findById(id);
+
     let edit = {};
 
     if(user != undefined){
@@ -89,12 +90,8 @@ exports.update = async (id, email, name) => {
             return { status: false, err: "E-mail já cadastrado" };
         }
 
-        if(validation.validationField(name)){
+        if(!validation.validationField(name)){
             edit.name = name;   
-        }
-    
-        if(validation.validationField(role)){
-            edit.role = role;
         }
 
         try{

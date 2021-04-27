@@ -76,3 +76,22 @@ exports.login = async (req, res) => {
         res.json({ status: false, err: "Usuário não existe." }).status(406);
     }
 }
+
+// PUT
+exports.edit = async (req, res) => {
+    const id = req.params.id;
+    const { email, name } = req.body;
+
+    const result = await User.update(id, email, name);
+
+    if(result != undefined){
+        if(result.status){
+            res.status(200).json({message: "Atualizações salvas com sucesso."});
+        }else{
+            res.status(406).json(result.err);
+        }
+    }else{
+        res.status(406).json(result.err);
+    }
+    
+}
