@@ -110,7 +110,6 @@ exports.update = async (id, email, name) => {
 }
 
 // DELETE
-
 exports.remove = async (id) => {
     try{
         const user =  await this.findById(id);
