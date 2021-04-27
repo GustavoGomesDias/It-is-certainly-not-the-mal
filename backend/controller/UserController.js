@@ -2,8 +2,7 @@ const User = require("../models/User");
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 const validations = require('../validations/validations');
-
-const secret = 'iuaduiajsdjuisajodijoasidjio';
+const { secret } = require('../.env/secrets');
 
 // GET
 exports.getAllUsers = async (req, res) => {
@@ -72,7 +71,7 @@ exports.login = async (req, res) => {
         const result = await bcrypt.compare(password, user.password);
 
         if(result){
-            const token = jwt.sign({ id: user.id, emial: user.email, role: user.role }, secret);
+            const token = jwt.sign({ id: user.id, emial: user.email, role: user.role, isLogged: true }, secret);
             res.json({ token: token }).status(200);
         }else{
             res.json({ message: "Senha incorreta." }).status(200);
