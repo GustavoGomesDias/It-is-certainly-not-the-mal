@@ -1,5 +1,6 @@
 const knex = require('../database/connection');
 const { validationField } = require('../validations/validations');
+const { isURL } = require('validator');
 
 const findAll = async () => {
     try{
@@ -76,11 +77,65 @@ const addNew = async (name, episodes, seasons, chapterManga = 0, image) => {
     }
 }
 
+const update = async (id, episodes, seasons, chapterManga, image) => {
+    const anime = await findByid(id);
+
+    let edit = {};
+    if(anime != undefined){
+        if(!validationField(episodes)){
+            edit.episodes = episodes;
+        }
+
+        if(!validationField(seasons)){
+            edit.seasons = seasons;
+        }
+
+        if(!validationField(chapterManga)){
+            edit.chapterManga = chapterManga;
+        }
+
+        if(!validationField(image) && isURL(image)){
+            edit.image = image;
+        }
+
+        try{
+            await knex
+                .update(edit)
+                .where({ id: id })
+                .table("animes");
+            return { status: true };
+        }catch(err){
+            return { status: false, err: err };
+        }
+    }else{
+        return { status: false, err: "Anime não encontrado." };
+    }
+
+}
+
+const remove = async (id) => {
+    try{
+        const user = await findByid(id);
+        if(user != undefined){
+            await knex
+                .delete()
+                .where({ id: id })
+                .table("animes");
+            return { status: true };
+        }else{
+            return { status: false, err: "Usuário não existe." };
+        }
+    }catch(err){
+        return { status: false, err: "Usuário não existe." }
+    }
+}
 
 module.exports = {
     findAll,
     addNew,
     findName,
     findByid,
-    findByName
+    findByName,
+    update,
+    remove
 }

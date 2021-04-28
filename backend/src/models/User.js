@@ -79,7 +79,6 @@ exports.update = async (id, email, name) => {
     const user = await this.findById(id);
 
     let edit = {};
-    console.log(email);
 
     if(user != undefined){
         if(email != undefined){
@@ -122,7 +121,7 @@ exports.remove = async (id) => {
                 .table("users");
             return { status: true };
         }else{
-            return { status: false, err: "usuário não existe" };
+            return { status: false, err: "usuário não existe." };
         }
     }catch(err){
         return { status: false, err: err };

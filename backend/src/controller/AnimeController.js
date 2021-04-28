@@ -65,9 +65,38 @@ const addNewAnime = async (req, res) => {
     res.status(200).json({ message: "Anime cadastrado!" });
 }
 
+const edit = async (req, res) => {
+    const id = req.params.id;
+    const { episodes, seasons, chapterManga, image } = req.body;
+
+    const result = await Anime.update(id, episodes, seasons, chapterManga, image);
+
+    if(result != undefined){
+        if(result.status){
+            res.status(200).json({ message: "Atualização feita com sucesso." });
+        }else{
+            res.status(406).json(result.err);
+        }
+    }else{
+        res.status(406).json(result.err)
+    }
+}
+
+const deleteAnime = async (req, res) => {
+    const id = req.params.id;
+    const result = await Anime.remove(id);
+    if(result.status){
+        res.status(200).json({ message: "Usuário deletado com sucesso" })
+    }else{
+        res.status(406).json(result.err);
+    }
+}
+
 module.exports = {
     findAllAnimes,
     addNewAnime,
     findAnimeById,
-    findAnimeByName
+    findAnimeByName,
+    edit,
+    deleteAnime
 }

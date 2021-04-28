@@ -7,7 +7,10 @@ exports.validationField = (field) => {
         return true;
     }
 
-    if(field = ""){
+    if(field == ""){
+        return true;
+    }
+    if(field == 0){
         return true;
     }
 

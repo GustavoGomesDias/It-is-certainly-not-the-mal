@@ -17,6 +17,8 @@ router.get('/animes', AnimeController.findAllAnimes);
 router.get('/animes/:id', AnimeController.findAnimeById);
 router.post('/animes', AnimeController.addNewAnime);
 router.post('/animes/search', AnimeController.findAnimeByName);
+router.put('/animes/:id', AnimeController.edit);
+router.delete('/animes/:id', AnimeController.deleteAnime);
 
 
 module.exports = router;
