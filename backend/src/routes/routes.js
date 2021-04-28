@@ -1,6 +1,7 @@
 const { Router } = require('express');
 const router = Router();
 const UserController = require("../controller/UserController");
+const AnimeController = require('../controller/AnimeController');
 const Auth = require('../middleware/Auth');
 
 // User routes
@@ -10,5 +11,10 @@ router.post('/users', UserController.createNewUser);
 router.post('/users/login', UserController.login);
 router.put('/users/:id', Auth.isLogged, UserController.edit);
 router.delete('/users/:id', Auth.isLogged, UserController.delete);
+
+// Anime routes
+router.get('/animes', AnimeController.findAllAnimes);
+router.post('/animes', AnimeController.addNewAnime);
+
 
 module.exports = router;

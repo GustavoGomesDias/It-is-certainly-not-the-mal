@@ -30,11 +30,6 @@ exports.createNewUser = async (req, res) => {
         res.status(400).json({ err: "O e-mail deve seguir um formato parecido com 'exemplo@exemplo.com" });
         return;
     }
-
-    if(validations.validationField(email)){
-        res.status(400).json({ err: "Informações inválidas" });
-        return;
-    }
     
     if(validations.validationField(password)){
         res.status(400).json({ err: "Informações inválidas" });
@@ -42,12 +37,6 @@ exports.createNewUser = async (req, res) => {
     }
     
     if(validations.validationField(name)){
-        res.status(400).json({ err: "Informações inválidas" });
-        return;
-    }
-
-    
-    if(email == "" || name == "" || password == ""){
         res.status(400).json({ err: "Informações inválidas" });
         return;
     }
