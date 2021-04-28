@@ -3,6 +3,7 @@ const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 const validations = require('../validations/validations');
 const { secret } = require('../.env/secrets');
+const { isEmail } = require('validator');
 
 // GET
 exports.getAllUsers = async (req, res) => {
@@ -26,7 +27,7 @@ exports.getUserById = async (req, res) => {
 exports.createNewUser = async (req, res) => {
     const { email, password, name } = req.body;
 
-    if(!validations.validationEmail(email)){
+    if(!isEmail(email)){
         res.status(400).json({ err: "O e-mail deve seguir um formato parecido com 'exemplo@exemplo.com" });
         return;
     }

@@ -1,5 +1,3 @@
-const { isEmail } = require('validator');
-
 exports.validationField = (field) => {
     if(field == undefined){
         return true;
@@ -15,8 +13,6 @@ exports.validationField = (field) => {
 
     return false
 }
-
-exports.validationEmail = (email) => isEmail(email);
 
 exports.validationPassword = (password) => {
     if(password.length < 3){

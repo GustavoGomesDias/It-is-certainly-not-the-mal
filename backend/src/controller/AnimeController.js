@@ -1,5 +1,6 @@
 const Anime = require('../models/Anime');
 const { validationField } = require('../validations/validations');
+const { isURL } = require('validator');
 
 const findAllAnimes = async (req, res) => {
     const animes = await Anime.findAll();
@@ -49,8 +50,8 @@ const addNewAnime = async (req, res) => {
         return;
     }
 
-    if(validationField(image)){
-        res.status(400).json({ err: "Imagem é requerida." });
+    if(!isURL(image)){
+        res.status(400).json({ err: "Imagem é requerida (deve ser um url)." });
         return;
     }
 
