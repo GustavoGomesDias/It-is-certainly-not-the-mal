@@ -26,6 +26,25 @@ const findByid = async (id) => {
     }
 }
 
+const findByName = async (name) => {
+    try{
+        // select * from `users` where `columnName` like '%rowlikeme%'
+        const result = await knex
+            .select("*")
+            .where('name', 'like',`%${name}%`)
+            .table('animes');
+        if(result.length > 1){
+            return result;
+        }else if(result.length == 1){
+            return result[0];
+        }else{
+            return undefined;
+        }
+    }catch(err){
+        return { err: err, result: [] };
+    }
+}
+
 const findName = async (name) => {
     try{
         const anime = await knex
@@ -62,5 +81,6 @@ module.exports = {
     findAll,
     addNew,
     findName,
-    findByid
+    findByid,
+    findByName
 }
