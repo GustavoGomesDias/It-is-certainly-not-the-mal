@@ -10,6 +10,22 @@ const findAll = async () => {
     }
 }
 
+const findByid = async (id) => {
+    try{
+        const result = await knex
+            .select(["id", "name", "episodes", "seasons", "chapterManga", "image"])
+            .where({ id: id })
+            .table('animes');
+        if(result.length > 0){
+            return result[0];
+        }else{
+            return undefined;
+        }
+    }catch(err){
+        return { err: err, result: [] };
+    }
+}
+
 const findName = async (name) => {
     try{
         const anime = await knex
@@ -45,5 +61,6 @@ const addNew = async (name, episodes, seasons, chapterManga = 0, image) => {
 module.exports = {
     findAll,
     addNew,
-    findName
+    findName,
+    findByid
 }

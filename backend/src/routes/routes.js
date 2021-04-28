@@ -14,6 +14,7 @@ router.delete('/users/:id', Auth.isLogged, UserController.delete);
 
 // Anime routes
 router.get('/animes', AnimeController.findAllAnimes);
+router.get('/animes/:id', AnimeController.findAnimeById);
 router.post('/animes', AnimeController.addNewAnime);
 
 

@@ -7,6 +7,18 @@ const findAllAnimes = async (req, res) => {
     res.status(200).json(animes);
 }
 
+const findAnimeById = async (req, res) => {
+    const id = req.params.id;
+
+    const anime = await Anime.findByid(id);
+    if(anime == undefined){
+        res.status(404).json({ err: "Anime não encontrado" });
+    }else{
+        res.json(anime).status(200);
+    }
+    
+}
+
 const addNewAnime = async (req, res) => {
     const { name, episodes, seasons, chapterManga, image } = req.body;
 
@@ -42,5 +54,6 @@ const addNewAnime = async (req, res) => {
 
 module.exports = {
     findAllAnimes,
-    addNewAnime
+    addNewAnime,
+    findAnimeById
 }
