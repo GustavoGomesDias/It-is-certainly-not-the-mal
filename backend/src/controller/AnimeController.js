@@ -86,7 +86,7 @@ const deleteAnime = async (req, res) => {
     const id = req.params.id;
     const result = await Anime.remove(id);
     if(result.status){
-        res.status(200).json({ message: "Usuário deletado com sucesso" })
+        res.status(200).json({ message: "Anime deletado com sucesso" })
     }else{
         res.status(406).json(result.err);
     }

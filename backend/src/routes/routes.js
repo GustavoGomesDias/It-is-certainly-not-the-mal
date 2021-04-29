@@ -2,6 +2,7 @@ const { Router } = require('express');
 const router = Router();
 const UserController = require("../controller/UserController");
 const AnimeController = require('../controller/AnimeController');
+const ListController = require("../controller/ListController");
 const Auth = require('../middleware/Auth');
 
 // User routes
@@ -19,6 +20,11 @@ router.post('/animes', AnimeController.addNewAnime);
 router.post('/animes/search', AnimeController.findAnimeByName);
 router.put('/animes/:id', AnimeController.edit);
 router.delete('/animes/:id', AnimeController.deleteAnime);
+
+// Lists routes
+router.get('/users/lists/:user_id', ListController.findAllListsByUserId);
+router.post('/users/lists/view', ListController.findListByName);
+router.post('/users/lists/:user_id', ListController.createNewList);
 
 
 module.exports = router;
