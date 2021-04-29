@@ -3,7 +3,7 @@ const validations = require('../validations/validations');
 
 const findAllByUserId = async (user_id) => {
     try{
-        const result = knex
+        const result = await knex
             .select(["id", "name"])
             .where({ user_id: user_id })
             .table("lists");

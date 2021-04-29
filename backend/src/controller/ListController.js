@@ -9,7 +9,7 @@ const findAllListsByUserId = async (req, res) => {
     if(lists != undefined || lists.length > 0){
         res.status(200).json(lists);
     }else{
-        res.status(404).json(lists.err);
+        res.status(404).json({message: "Nenhuma lista encontrada." });
     }
 
 }

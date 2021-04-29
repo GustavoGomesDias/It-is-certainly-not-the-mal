@@ -3,6 +3,7 @@ const router = Router();
 const UserController = require("../controller/UserController");
 const AnimeController = require('../controller/AnimeController');
 const ListController = require("../controller/ListController");
+const ListAnimeController = require('../controller/ListAnimeController');
 const Auth = require('../middleware/Auth');
 
 // User routes
@@ -27,5 +28,9 @@ router.get('/users/lists', ListController.findListByName);
 router.post('/users/lists', ListController.createNewList);
 router.delete('/users/lists/delete', ListController.deleteList);
 
+
+// Lists_animes routes
+router.get('/users/list/:list_id', ListAnimeController.findAllAnimesInList);
+router.post('/users/list', ListAnimeController.addNewAnimeInList);
 
 module.exports = router;

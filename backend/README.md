@@ -1,6 +1,6 @@
 # BANCO DE DADOS
 
-## LISTAS DE ANIMES (CRIADA POR CADA USUÁRIO)
+## RASCUNHO
 
 ### users
 id | name | email | password | role
