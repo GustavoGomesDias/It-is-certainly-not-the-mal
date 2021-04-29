@@ -1,6 +1,6 @@
 # Certamente não é o MyAnimeList
 
-<img src="/src/logo.png">
+<img src="/src/logo.png" align="center">
 
 Estou treinando, então não exiga muito desse jr aqui. 😭
 
