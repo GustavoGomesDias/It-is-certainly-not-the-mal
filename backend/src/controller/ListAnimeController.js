@@ -21,7 +21,7 @@ const addNewAnimeInList = async (req, res) => {
     if(result){
         res.status(200).json({ message: "Anime adionado a lista." });
     }else{
-        res.status(400).json({ err: "Informações inválidas." });
+        res.status(406).json({ err: "O anime já está na lista." });
     }
     
 }

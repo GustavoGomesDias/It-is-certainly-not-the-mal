@@ -16,13 +16,36 @@ const findAllAnimes = async (list_id) => {
     }
 }
 
+const findAnimeById = async (list_id, anime_id) => {
+    const result = await knex
+        .select('*')
+        .where({ list_id: list_id })
+        .andWhere({ anime_id: anime_id })
+        .table('lists_animes');
+    
+    if(result.length > 0){
+        return true;
+    }else{
+        return false;
+    }
+    
+}
+
 const addAnime = async (list_id, anime_id) => {
     try{
-        await knex
-            .insert({ list_id, anime_id })
-            .table("lists_animes");
 
-        return true;
+        const verify = await findAnimeById(list_id, anime_id);
+
+        if(!verify){
+            await knex
+                .insert({ list_id, anime_id })
+                .table("lists_animes");
+    
+            return true;
+        }else{
+            return false;
+        }
+
     }catch(err){
         console.log(err);
         return false;
