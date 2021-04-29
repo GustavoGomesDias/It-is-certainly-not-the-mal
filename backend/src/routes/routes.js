@@ -23,8 +23,9 @@ router.delete('/animes/:id', AnimeController.deleteAnime);
 
 // Lists routes
 router.get('/users/lists/:user_id', ListController.findAllListsByUserId);
-router.post('/users/lists/view', ListController.findListByName);
-router.post('/users/lists/:user_id', ListController.createNewList);
+router.get('/users/lists', ListController.findListByName);
+router.post('/users/lists', ListController.createNewList);
+router.delete('/users/lists/delete', ListController.deleteList);
 
 
 module.exports = router;

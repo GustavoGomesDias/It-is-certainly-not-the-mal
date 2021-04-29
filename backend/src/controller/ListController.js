@@ -38,8 +38,19 @@ const createNewList = async (req, res) => {
     res.status(200).json({ message: "Lista criada com sucesso." });
 }
 
+const deleteList = async (req, res) => {
+    const id = req.body.id;
+    const result = await List.deleteList(id);
+    if(result.status){
+        res.status(200).json({ message: "A lista foi deletada." });
+    }else{
+        res.status(406).json(result.err);
+    }
+}
+
 module.exports = {
     findAllListsByUserId,
     findListByName,
-    createNewList
+    createNewList,
+    deleteList
 }

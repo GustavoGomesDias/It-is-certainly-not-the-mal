@@ -14,6 +14,22 @@ const findAllByUserId = async (user_id) => {
     }
 }
 
+const findListById = async (id) => {
+    try{
+        const result = await knex
+            .select(['id', 'name'])
+            .where({ id: id })
+            .table('lists');
+        if(result.length > 0){
+            return result[0];
+        }else{
+            return undefined;
+        }
+    }catch(err){
+        return { err: err, retulst: [] };
+    }
+}
+
 const createNewList = async (user_id, name) => {
     try{
         await knex
@@ -45,8 +61,28 @@ const findListByName = async (user_id, name) =>{
     }
 }
 
+const deleteList = async (id) => {
+    try{
+        const user = await findListById(id);
+        if(user != undefined){
+            await knex
+                .delete()
+                .where({ id: id })
+                .table('lists');
+            return { status: true };
+        }else{
+            return { status: false, err: "Lista não existe" };
+        }
+    }catch(err){
+        console.log(err);
+        return { status: false, err: "Houve uma falha na deleção, tente novamente." }
+    }
+}
+
 module.exports = {
     findAllByUserId,
     createNewList,
-    findListByName
+    findListByName,
+    findListById,
+    deleteList
 }
