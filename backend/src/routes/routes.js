@@ -15,22 +15,22 @@ router.put('/users/:id', Auth.isLogged, UserController.edit);
 router.delete('/users/:id', Auth.isLogged, UserController.delete);
 
 // Anime routes
-router.get('/animes', AnimeController.findAllAnimes);
-router.get('/animes/:id', AnimeController.findAnimeById);
-router.post('/animes', AnimeController.addNewAnime);
+router.get('/animes', Auth.isLogged, AnimeController.findAllAnimes);
+router.get('/animes/:id', Auth.isLogged, AnimeController.findAnimeById);
+router.post('/animes', Auth.isLogged, AnimeController.addNewAnime);
 router.post('/animes/search', AnimeController.findAnimeByName);
-router.put('/animes/:id', AnimeController.edit);
-router.delete('/animes/:id', AnimeController.deleteAnime);
+router.put('/animes/:id', Auth.isLogged, AnimeController.edit);
+router.delete('/animes/:id', Auth.isLogged, AnimeController.deleteAnime);
 
 // Lists routes
-router.get('/users/lists/:user_id', ListController.findAllListsByUserId);
-router.get('/users/lists', ListController.findListByName);
-router.post('/users/lists', ListController.createNewList);
-router.delete('/users/lists/delete', ListController.deleteList);
+router.get('/users/lists/:user_id', Auth.isLogged, ListController.findAllListsByUserId);
+router.get('/users/lists', Auth.isLogged, ListController.findListByName);
+router.post('/users/lists', Auth.isLogged, ListController.createNewList);
+router.delete('/users/lists/delete', Auth.isLogged, ListController.deleteList);
 
 // Lists_animes routes
-router.get('/users/list/:list_id', ListAnimeController.findAllAnimesInList);
-router.post('/users/list', ListAnimeController.addNewAnimeInList);
-router.delete('/users/list/delete', ListAnimeController.deleteAnimeFromList);
+router.get('/users/list/:list_id', Auth.isLogged, ListAnimeController.findAllAnimesInList);
+router.post('/users/list', Auth.isLogged, ListAnimeController.addNewAnimeInList);
+router.delete('/users/list/delete', Auth.isLogged, ListAnimeController.deleteAnimeFromList);
 
 module.exports = router;
