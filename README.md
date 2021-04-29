@@ -1,5 +1,7 @@
 # Certamente não é o MyAnimeList
 
+<img src="/src/logo.png">
+
 Estou treinando, então não exiga muito desse jr aqui. 😭
 
 A ideia é que esse projeto tenha backend e frontend, mas por enquanto só tem o backend (que acredito q esteja uns 70% completo e caso você tenha alguma dica, fique avontade para dar) e o frontend fica para um futuro próximo (pode me cobrar). Caso queira ver o que eu pretendo fazer ainda, entra no [Notion](https://www.notion.so/Certamente-n-o-o-MyAnimeList-8ef5e00a60d649a3a6e711c20463817d)
@@ -8,7 +10,7 @@ A ideia é que esse projeto tenha backend e frontend, mas por enquanto só tem o
 1. [O que eu aprendi de novo nesse projeto](https://github.com/GustavoGomesDias/It-is-certainly-not-the-mal/tree/main#1--o-que-eu-aprendi-de-novo-nesse-projeto)
 2. [Tecnologias usadas](https://github.com/GustavoGomesDias/It-is-certainly-not-the-mal/tree/main#2--tecnologias-usadas)
 3. [Para rodar](https://github.com/GustavoGomesDias/It-is-certainly-not-the-mal/tree/main#3--para-rodar-o-projeto)
-4. [Documentação](https://github.com/GustavoGomesDias/It-is-certainly-not-the-mal/tree/main/tree/main#4--documenta%C3%A7%C3%A3o)
+4. [Documentação](https://github.com/GustavoGomesDias/It-is-certainly-not-the-mal/tree/main#4--documenta%C3%A7%C3%A3o)
 5. [Importante](https://github.com/GustavoGomesDias/It-is-certainly-not-the-mal/tree/main#5--importante)
 
 ## 1. 🎓 O que eu aprendi de novo nesse projeto
