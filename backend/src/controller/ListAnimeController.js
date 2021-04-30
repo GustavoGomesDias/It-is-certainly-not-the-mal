@@ -5,8 +5,6 @@ const findAllAnimesInList = async (req, res) => {
 
     const animes = await ListAnime.findAllAnimes(list_id);
 
-    
-
     if(animes != undefined){
         res.status(200).json(animes);
     }else{

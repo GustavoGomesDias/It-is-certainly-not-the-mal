@@ -15,7 +15,8 @@ const findAllListsByUserId = async (req, res) => {
 }
 
 const findListByName = async (req, res) => {
-    const { user_id, name } = req.body;
+    const user_id = req.body.user_id;
+    const name = req.query.search;
 
     const lists = await List.findListByName(user_id, name);
 

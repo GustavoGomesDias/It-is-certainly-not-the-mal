@@ -21,7 +21,7 @@ const findAnimeById = async (req, res) => {
 }
 
 const findAnimeByName = async (req, res) => {
-    const name = req.body.name;
+    const name = req.query.search;
 
     const anime = await Anime.findByName(name);
     if(anime == undefined){

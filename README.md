@@ -4,7 +4,7 @@
 
 Estou treinando, então não exiga muito desse jr aqui. 😭
 
-A ideia é que esse projeto tenha backend e frontend, mas por enquanto só tem o backend (que acredito q esteja uns 70% completo e caso você tenha alguma dica, fique avontade para dar) e o frontend fica para um futuro próximo (pode me cobrar). Caso queira ver o que eu pretendo fazer ainda, entra no [Notion](https://www.notion.so/Certamente-n-o-o-MyAnimeList-8ef5e00a60d649a3a6e711c20463817d)
+A ideia é que esse projeto tenha backend e frontend, mas por enquanto só tem o backend (que acredito que esteja uns 70% completo e caso você tenha alguma dica, fique avontade para dar) e o frontend fica para um futuro próximo (pode me cobrar). Caso queira ver o que eu pretendo fazer ainda, entra no [Notion](https://www.notion.so/Certamente-n-o-o-MyAnimeList-8ef5e00a60d649a3a6e711c20463817d)
 
 ## 📕 Sumário
 1. [O que eu aprendi de novo nesse projeto](https://github.com/GustavoGomesDias/It-is-certainly-not-the-mal/tree/main#1--o-que-eu-aprendi-de-novo-nesse-projeto)
@@ -17,7 +17,8 @@ A ideia é que esse projeto tenha backend e frontend, mas por enquanto só tem o
 - Likes - MySQL;
 - Tratamento de lista de dados no sql;
 - Login (ainda pesquisar sobre logout);
-- Join (SQL)
+- Join (SQL);
+- Query Params.
 
 ## 2. 💻 Tecnologias usadas
 * Express;
@@ -26,7 +27,7 @@ A ideia é que esse projeto tenha backend e frontend, mas por enquanto só tem o
 * Bcrypt;
 * Validator;
 * Nodemon;
-* Knex.
+* Knex;
   * Mysql2.
 
 

@@ -17,14 +17,14 @@ router.delete('/users/:id', Auth.isLogged, UserController.delete);
 // Anime routes
 router.get('/animes', Auth.isLogged, AnimeController.findAllAnimes);
 router.get('/animes/:id', Auth.isLogged, AnimeController.findAnimeById);
+router.get('/animes/search', AnimeController.findAnimeByName);
 router.post('/animes', Auth.isLogged, AnimeController.addNewAnime);
-router.post('/animes/search', AnimeController.findAnimeByName);
 router.put('/animes/:id', Auth.isLogged, AnimeController.edit);
 router.delete('/animes/:id', Auth.isLogged, AnimeController.deleteAnime);
 
 // Lists routes
 router.get('/users/lists/:user_id', Auth.isLogged, ListController.findAllListsByUserId);
-router.get('/users/lists', Auth.isLogged, ListController.findListByName);
+router.get('/users/lists/search/test', Auth.isLogged, ListController.findListByName);
 router.post('/users/lists', Auth.isLogged, ListController.createNewList);
 router.delete('/users/lists/delete', Auth.isLogged, ListController.deleteList);
 
