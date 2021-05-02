@@ -1,7 +1,5 @@
 # Certamente não é o MyAnimeList
 
-<img src="/src/logo.png" align="center">
-
 Estou treinando, então não exiga muito desse jr aqui. 😭
 
 A ideia é que esse projeto tenha backend e frontend, mas por enquanto só tem o backend (que acredito que esteja uns 70% completo e caso você tenha alguma dica, fique avontade para dar) e o frontend fica para um futuro próximo (pode me cobrar). Caso queira ver o que eu pretendo fazer ainda, entra no [Notion](https://www.notion.so/Certamente-n-o-o-MyAnimeList-8ef5e00a60d649a3a6e711c20463817d)
